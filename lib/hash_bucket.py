@@ -116,6 +116,8 @@ class MultiplyHashBucketFabric(HashBucketFabricProtocol):
     collision_resolver: IndexCollisionResolverProtocol
     size: int = DEFAULT_HASH_TABLE_SIZE
     seed: float = DEFAULT_HASH_SEED
+
+    hash_func: Callable[[str], int] = hash
     hash_mod: int = DEFAULT_HASH_MOD
 
     def new(self):
@@ -123,5 +125,6 @@ class MultiplyHashBucketFabric(HashBucketFabricProtocol):
             collision_resolver=self.collision_resolver,
             size=self.size,
             seed=self.seed,
+            hash_func=self.hash_func,
             hash_mod=self.hash_mod,
         )
