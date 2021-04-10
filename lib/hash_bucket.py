@@ -33,7 +33,7 @@ class BucketOverflow(Exception):
 
 DEFAULT_HASH_SEED = (5 ** 0.5 - 1) / 2
 DEFAULT_HASH_TABLE_SIZE = 2 ** 10
-DEFAULT_HASH_MOD = 10 ** 8
+DEFAULT_HASH_MOD = 9 ** 9
 
 
 @dataclass
@@ -83,7 +83,7 @@ class MultiplyHashBucket(HashBucketProtocol):
         return None
 
     def _calculate_index(self, key: str) -> Any:
-        # Так как hash_func(key) может вернуть слишком большое число, берем только N чисел от него
+        # Так как hash_func(key) может вернуть слишком большое число, берем модуль от него
         hash_value = self.hash_func(key) % self.hash_mod
         # Получаем индекс по методу умножения
         index = floor(self.size * (fmod(hash_value * self.seed, 1)))

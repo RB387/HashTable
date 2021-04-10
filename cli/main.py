@@ -1,11 +1,11 @@
 from dataclasses import dataclass, field
 
-from lib import HashTableProtocol
+from lib.hash_bucket import HashBucketProtocol
 
 
 @dataclass
 class MainActivity:
-    hash_table: HashTableProtocol
+    hash_table: HashBucketProtocol
 
     _running: bool = field(default=True, init=False)
 

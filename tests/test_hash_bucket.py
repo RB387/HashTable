@@ -51,17 +51,17 @@ def test_multiple_add_multiply_hash_bucket(mock_hash):
 
     assert bucket._bucket == [
         None,
-        None,
-        None,
-        BucketValue(key='key3', value='value3', collisions=1),
-        BucketValue(key='key4', value='value4', collisions=0),
-        None,
-        None,
-        BucketValue(key='key0', value='value0', collisions=0),
         BucketValue(key='key1', value='value1', collisions=0),
-        BucketValue(key='key2', value='value2', collisions=0)
+        None,
+        None,
+        BucketValue(key='key2', value='value2', collisions=0),
+        BucketValue(key='key4', value='value4', collisions=0),
+        BucketValue(key='key0', value='value0', collisions=1),
+        BucketValue(key='key3', value='value3', collisions=0),
+        None,
+        None,
     ]
 
     index, result = bucket.get('key2')
-    assert index == 9
+    assert index == 4
     assert result == BucketValue(key='key2', value='value2', collisions=0)
